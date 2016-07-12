@@ -68,10 +68,13 @@ RANDOMIZE_DOWNLOAD_DELAY = True
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'ptt_crawler.pipelines.LeveldbPipeline': 300,
+   'ptt_crawler.pipelines.UnqlitePipeline': 50,
 }
+# 'ptt_crawler.pipelines.LeveldbPipeline': 300,
 
 LEVELDB_PATH = "ptt_crawler/db/level"
+
+UNQLITE_PATH = "ptt_crawler/db/unqlite.db"
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
