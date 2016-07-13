@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import twss_analysis
 from setuptools import setup, find_packages
 
 long_description = open('./README.md', 'r').read()
