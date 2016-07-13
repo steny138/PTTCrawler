@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from scrapy.crawler import CrawlerProcess
 from ptt_crawler.spiders.boards import PttBoard
+from ptt_crawler.spiders.article import PTTArticle
 
 from twisted.internet import reactor
 from scrapy.crawler import CrawlerRunner
@@ -17,7 +18,9 @@ def main():
     # settings.set('FEED_FORMAT','json')
     # settings.set('FEED_URI', 'result.json')
 
-    d = runner.crawl(PttBoard)
+    runner.crawl(PttBoard)
+    runner.crawl(PTTArticle)
+    d = runner.join()
     d.addBoth(lambda _: reactor.stop())
     result = reactor.run() # the script will block here until the crawling is finished
 
