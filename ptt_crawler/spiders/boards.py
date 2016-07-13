@@ -112,15 +112,6 @@ class PttBoard(scrapy.Spider):
             else:
                 logging.warning('There are no group or board can be found2.')
 
-    def parse_board(self, response):
-        if self.__isOver18(response):
-            pass
-            # 先抓最後一頁
-
-
-    def parse_article(self, response):
-        pass
-
     def __isOver18(self, response):
         if len(response.xpath('//div[@class="over18-button-container"]')) > 0:
             if self._retries < PTTSpider.MAX_RETRY:

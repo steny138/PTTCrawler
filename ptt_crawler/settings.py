@@ -55,9 +55,13 @@ RANDOMIZE_DOWNLOAD_DELAY = True
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'ptt_crawler.middlewares.MyCustomDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+	'scrapy.contrib.downloadermiddleware.useragent.UserAgentMiddleware' : None, 
+   	'ptt_crawler.middlewares.randomUseAgentMiddleware': 543,
+}
+
+# Enable or disable cookie in request.
+COOKIES_ENABLES=False
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html

@@ -10,11 +10,12 @@ from scrapy.utils.project import get_project_settings
 
 def main():
     configure_logging({'LOG_FORMAT': '%(levelname)s: %(message)s'})
-    runner = CrawlerRunner()
     settings = get_project_settings()
+    runner = CrawlerRunner(settings)
+    
 
-    settings.set('FEED_FORMAT','json')
-    settings.set('FEED_URI', 'result.json')
+    # settings.set('FEED_FORMAT','json')
+    # settings.set('FEED_URI', 'result.json')
 
     d = runner.crawl(PttBoard)
     d.addBoth(lambda _: reactor.stop())

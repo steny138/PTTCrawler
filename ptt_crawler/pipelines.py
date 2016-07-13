@@ -39,7 +39,19 @@ class LeveldbPipeline(object):
         
 class UnqlitePipeline(object):
     def process_item(self, item, spider):
-        records = self.db.collection(spider.name)
+        keyPrefix = ''
+        if 'articles' in item:
+            keyPrefix = 'board'
+        elif 'boards' in item:
+            keyPrefix = 'group'
+        elif 'score' in item:
+            keyPrefix = 'article'
+        elif 'kind' in item:
+            keyPrefix = 'comment'
+        else:
+            keyPrefix = 'none'
+
+        records = self.db.collection(keyPrefix)
         if not records.exists():
             logging.info("records collection created.")
             records.create()
